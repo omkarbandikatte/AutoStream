@@ -1,0 +1,12 @@
+langchain
+langgraph
+openai
+faiss-cpu
+fastapi
+uvicorn
+python-dotenv
+langchain_groq
+langchain_community
+sentence-transformers
+langchain-huggingface
+requests
