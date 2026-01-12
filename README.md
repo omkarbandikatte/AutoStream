@@ -87,4 +87,4 @@ State management is handled using a persistent AgentState object that is maintai
 
 This approach ensures the agent retains memory across 5–6 conversation turns, supports multi-step workflows, and avoids hallucinated behavior. By keeping product knowledge retrieval (RAG), intent detection, and tool execution modular and state-driven, the system remains easy to extend to additional channels such as WhatsApp or CRM integrations without changing core agent logic.
 
-![RAG Architecture Diagram](C:\Users\omkar\AI\AutoStream\frontend\src\assets\image.png)
+![RAG Architecture Diagram](frontend/src/assets/image.png)
