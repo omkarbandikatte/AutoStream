@@ -88,3 +88,16 @@ State management is handled using a persistent AgentState object that is maintai
 This approach ensures the agent retains memory across 5–6 conversation turns, supports multi-step workflows, and avoids hallucinated behavior. By keeping product knowledge retrieval (RAG), intent detection, and tool execution modular and state-driven, the system remains easy to extend to additional channels such as WhatsApp or CRM integrations without changing core agent logic.
 
 ![RAG Architecture Diagram](frontend/src/assets/image.png)
+
+
+## WhatsApp Deployment Using Webhooks
+
+The AutoStream conversational agent can be integrated with WhatsApp using the WhatsApp Business Cloud API, where WhatsApp acts as the messaging interface and the existing LangGraph agent remains the backend intelligence.
+
+First, a WhatsApp Business account is created using Meta’s Developer Console. A WhatsApp Business App is configured, and a webhook URL is registered. This webhook allows WhatsApp to send incoming user messages to our backend in real time.
+
+On the backend, a FastAPI webhook endpoint (e.g., /webhook) is exposed. When a user sends a WhatsApp message, WhatsApp forwards the message payload to this endpoint. The backend extracts the sender’s phone number (used as a unique user ID) and the message text. Conversation state is maintained per user by mapping the phone number to an AgentState object, ensuring memory across multiple turns.
+
+The extracted message is then passed into the LangGraph agent using the stored state. The agent performs intent detection, retrieves knowledge via the RAG pipeline if needed, and updates the state. Once the agent generates a response, the backend sends the reply back to the user using the WhatsApp Cloud API’s message-sending endpoint.
+
+This webhook-based integration cleanly separates messaging transport (WhatsApp) from agent logic, allowing the same backend to support multiple channels such as web chat or WhatsApp without modifying core agent behavior.
