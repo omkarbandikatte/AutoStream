@@ -1,3 +1,6 @@
+## Video
+https://drive.google.com/file/d/11JtJfQb_XmGwfKYWe9djJyGF6mskRwV2/view?usp=sharing
+
 # AutoStream Setup Guide
 
 ## Running the Application
