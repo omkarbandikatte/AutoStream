@@ -88,7 +88,7 @@ const ChatPage = () => {
       setMessages(prev => [...prev, loadingMessage]);
 
       try {
-        const response = await fetch('https://autostream-backend.onrender.com/api/chat', {
+        const response = await fetch('/api/chat', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
